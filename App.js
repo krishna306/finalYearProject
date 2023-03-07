@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import { useState } from "react";
+import { StyleSheet, View, Text, Image, Button, StatusBar } from "react-native";
+import Context from "./APIS/Context";
+import DiseaseCard from "./component/DiseaseCard";
+import Tabs from "./component/Tab";
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <View style={styles.statusbar} />
+      <Tabs/>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  statusbar: {
+    height: StatusBar.currentHeight,
+    backgroundColor: "#f8f7fd",
   },
 });
+
+export default () => {
+  return (
+    <>
+      <Context>
+        <App />
+      </Context>
+    </>
+  );
+};
